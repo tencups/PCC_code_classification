@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+}
+
+.header {
+    text-align: center;
+    height: auto; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    background-color: #f67349; /* Optional: Background color for the body */
+}
+
+.logo-container{
+    text-align: center;
+    margin: 5vh 0 ;
+}

@@ -1,14 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML 5 Boilerplate</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>PCC Code Classification</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index.css') }}"
+    />
   </head>
   <body>
-    <h1>PCC Code Classification</h1>
-	<script src="index.js"></script>
+    <script src="index.js"></script>
+    <div class="logo-container">
+      <img
+        src="{{ url_for('static', filename='images/Picture1.png') }}"
+        alt="Picture 1"
+      />
+    </div>
+    <div class="header">
+      <h1>NHLBI PCC Code Classification Tool (PCCT)</h1>
+    </div>
+    <p style="direction: rtl; margin-right: 5%">
+      Powered by NHLBI Chat - an OpenAI-based Large Language Model
+    </p>
+    <div style="margin-left: 5%">
+      <h3><bold>Instructions</bold></h3>
+      <ol>
+        <li>POs do this</li>
+        <li>POs do that</li>
+      </ol>
+    </div>
   </body>
 </html>
