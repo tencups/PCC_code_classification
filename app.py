@@ -15,8 +15,10 @@ def read_excel_and_print_column(file_path):
         for index, row in df.iterrows():
             abstract_found.append(row['Abstract Text (only)'])
             # print(row['Abstract Text (only)'])
+            return abstract_found
     else:
         print("The column 'Abstract Text (only)' does not exist in the provided Excel file.")
+        return None
 
 def specific_aim(df):
     # check if  "Abstract Text (only)" column exists
@@ -28,12 +30,19 @@ def specific_aim(df):
             abstract_text = row['Abstract Text (only)']
             if isinstance(abstract_text, str):
                 # split abstract_text into sentences regex 
-                sentences = re.split(r'(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s', abstract_text)
-                
+                sentences = re.split(r'(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?|\!)\s', abstract_text)                
                 # iterate through each sentence to find occurrences of "aim" 
-                for sentence in sentences:
+                for i in range(len(sentences)):
+                    sentence = sentences[i]
                     if re.search(r'\baim\b', sentence, flags=re.IGNORECASE):
-                        found_aims.append(sentence.strip())  # add sentence containing "aim"
+                        # capture previous and next sentences 
+                        before = sentences[i - 1].strip() if i - 1 >= 0 else ''
+                        after = sentences[i + 1].strip() if i + 1 < len(sentences) else ''
+                        found_aims.append({
+                            'before': before,
+                            'aim': sentence.strip(),
+                            'after': after
+                        })
             else:
                 found_aims.append(None)  # add None for non-string abstract_text
 
