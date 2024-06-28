@@ -37,6 +37,21 @@
           you saved in your “folder”.
         </li>
       </ol>
+      <div class="container">
+        <form method="post" enctype="multipart/form-data">
+          <div>
+            <label for="file">Choose File</label>
+            <input type="file" id="file" name="file" />
+          </div>
+          <button>Run</button>
+          <button>Download</button>
+          <button type="submit">View</button>
+        </form>
+
+        {% if html_table %}
+        <div class="table-container">{{ html_table | safe }}</div>
+        {% endif %}
+      </div>
     </div>
   </body>
 </html>
