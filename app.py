@@ -8,10 +8,13 @@ def read_excel_and_print_column(file_path):
     # Read the Excel file
     df = pd.read_excel(file_path)
 
+    abstract_found = []
+
     # Check if the column "Abstract Text (only)" exists in the dataframe
     if 'Abstract Text (only)' in df.columns:
         for index, row in df.iterrows():
-            print(row['Abstract Text (only)'])
+            abstract_found.append(row['Abstract Text (only)'])
+            # print(row['Abstract Text (only)'])
     else:
         print("The column 'Abstract Text (only)' does not exist in the provided Excel file.")
 
@@ -64,7 +67,7 @@ def home():
         found_aims = []
         for index, row in df_processed.iterrows():
             found_aims.append(row['Specific Aims'])
-            print(f"Found aims for row {index}: {row['Specific Aims']}")
+            # print(f"Found aims for row {index}: {row['Specific Aims']}")
 
         return render_template('index.html', data=df_processed.to_html(), found_aims=found_aims)
     else:
